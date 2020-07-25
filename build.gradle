@@ -1,0 +1,27 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '6.0.0'
+    id 'java'
+}
+
+group 'kjk'
+version '0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.graalvm.js/js-scriptengine
+    compile group: 'org.graalvm.js', name: 'js-scriptengine', version: '20.1.0'
+    // https://mvnrepository.com/artifact/org.graalvm.js/js
+    compile group: 'org.graalvm.js', name: 'js', version: '20.1.0'
+    // https://mvnrepository.com/artifact/org.graalvm.regex/regex
+    compile group: 'org.graalvm.regex', name: 'regex', version: '20.1.0'
+}
+
+shadowJar {
+    archiveName 'graaljsbundle.jar'
+    relocate 'com.ibm.icu', 'graaljsbundle.com.ibm.icu'
+    relocate 'org.objectweb.asm', 'graaljsbundle.org.objectweb.asm'
+    exclude 'META-INF/versions/**'
+}
