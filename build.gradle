@@ -21,7 +21,11 @@ dependencies {
 
 shadowJar {
     archiveName 'graaljsbundle.jar'
-    relocate 'com.ibm.icu', 'graaljsbundle.com.ibm.icu'
+
     relocate 'org.objectweb.asm', 'graaljsbundle.org.objectweb.asm'
+//    relocate 'com.ibm.icu', 'graaljsbundle.com.ibm.icu'
+
+    exclude 'com/ibm/icu/**'
     exclude 'META-INF/versions/**'
+    exclude 'module-info.class'
 }
